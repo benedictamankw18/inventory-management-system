@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <link rel="stylesheet" href="./../css/view.css">
+    <link rel="stylesheet" href="./../css/dash.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+   <nav class="navbar">
+        <div class="logo">
+            <img src="./../image/logo.png" alt="Logo">
+        </div>
+            <ul class="NavItems">
+                <li><img src="./../image/icon/017-data-report.png" alt=""><a href="#" onclick="loadDashboard()">Dashboard</a></li>
+                <li><img src="./../image/icon/002-grocery-store.png" alt=""><a href="#" onclick="loadRetails()">Retails</a></li>
+                <li><img src="./../image/icon/004-wholesaler.png" alt=""><a href="#" onclick="loadWholesales()">Whole Sales</a></li>
+                <li><img src="./../image/icon/010-multiple-users-silhouette.png" alt=""><a href="#" onclick="loadUsers()">Users</a></li>
+                <li><img src="./../image/icon/014-bar-chart.png" alt=""><a href="#" onclick="loadReports()">Report</a></li>
+            </ul>
+
+            <menu class="menuNav">
+                 <li><img src="./../image/icon/019-helpdesk.png" alt=""><a href="#section1">Help</a></li>
+                <li><img src="./../image/icon/022-settings.png" alt=""><a href="#section2">Setting</a></li>
+                <li><img src="./../image/icon/027-logout-1.png" alt=""><a href="#section3">Logout</a></li>
+                
+            </menu>
+        </nav>
+        <div class="wholePage">
+    <header class="header">
+        <form action="" method="get">
+            <img src="./../image/icon/021-magnifying-glass.png" alt="Search Icon" class="search-icon">
+            <input type="text" name="search" placeholder="Search..." class="search-bar">
+            <!-- <button type="submit" class="search-button">Search</button> -->
+        </form>
+        <!-- <div class="logo"><img src="./../img/logo.png" alt="Logo"></div> -->
+         <div class="profile-nav">
+<div class="user-info">
+            <p class="Username">Welcome,<span> User!</span></p>
+            <img src="./../image/icon/008-arrow-down-sign-to-navigate.png" alt="Logo" class="user-logo">
+        </div>
+        <div class="icons-profile">
+            <div class="icon notification-icon"><img src="./../image/icon/014-bell-1.png" alt="Logo"></div>
+            <div class="icon profile-icon"><img src="./../image/icon/003-user-1.png" alt="Logo"></div>
+        </div>
+        
+         </div>
+        
+    </header>
+    
+    <main id="main-content">
+        <!-- Dashboard content will be loaded here -->
+    </main>
+   <footer class="footer">
+<a href="https://n3thunt3r.social"> By n3thunt3r.social</a>
+</footer>
+    </div>
+    
+    <script>
+        // Function to load dashboard content
+        function loadDashboard() {
+            fetch('dash.html')
+                .then(response => response.text())
+                .then(html => {
+                    // Extract only the dashboard content (between body tags)
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const dashboardContent = doc.querySelector('.dashboard');
+                    
+                    if (dashboardContent) {
+                        document.getElementById('main-content').innerHTML = dashboardContent.outerHTML;
+                        // Reinitialize charts after content is loaded
+                        initializeCharts();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading dashboard:', error);
+                    document.getElementById('main-content').innerHTML = '<h2>Error loading dashboard</h2>';
+                });
+        }
+
+        // Function to initialize charts
+        function initializeCharts() {
+            // Wait a bit for DOM to settle
+            setTimeout(() => {
+                const chaWholeSale = document.getElementById('chaWholeSale');
+                const chaRetail = document.getElementById('chaRetail');
+                const chaAnnualRevenue = document.getElementById('chaAnnualRevenue');
+
+                if (chaWholeSale) {
+                    new Chart(chaWholeSale.getContext('2d'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Wholesale In-Stock', 'Wholesale Out-Stock'],
+                            datasets: [{
+                                data: [3433, 1567],
+                                backgroundColor: ['#ED8B85', '#F2FAF7'],
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false } }
+                        }
+                    });
+                }
+
+                if (chaRetail) {
+                    new Chart(chaRetail.getContext('2d'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Retail In-Stock', 'Retail Out-Stock'],
+                            datasets: [{
+                                data: [12, 88],
+                                backgroundColor: ['#ED8B85', '#F2FAF7'],
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false } }
+                        }
+                    });
+                }
+
+                if (chaAnnualRevenue) {
+                    new Chart(chaAnnualRevenue.getContext('2d'), {
+                        type: 'line',
+                        data: {
+                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                            datasets: [{
+                                label: 'Annual Revenue',
+                                data: [12000, 19000, 15000, 25000, 22000, 30000],
+                                borderColor: '#F2A680',
+                                backgroundColor: '#f2a68022',
+                                fill: true,
+                                tension: 0.4,
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    ticks: {
+                                        callback: function(value) {
+                                            return '$' + value.toLocaleString();
+                                        }
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: { display: true, position: 'top' }
+                            }
+                        }
+                    });
+                }
+
+                // Initialize pie charts
+                const salesChart = document.getElementById('salesPieChart');
+                if (salesChart) {
+                    new Chart(salesChart.getContext('2d'), {
+                        type: 'pie',
+                        data: {
+                            labels: ['Wholesale', 'Retail'],
+                            datasets: [{
+                                data: [3001, 5000],
+                                backgroundColor: ['#F2A680', '#ED8B85'],
+                                borderWidth: 2,
+                                borderColor: '#fff'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' } }
+                        }
+                    });
+                }
+
+                const inventoryChart = document.getElementById('inventoryPieChart');
+                if (inventoryChart) {
+                    new Chart(inventoryChart.getContext('2d'), {
+                        type: 'pie',
+                        data: {
+                            labels: ['In Stock', 'Low Stock', 'Out of Stock'],
+                            datasets: [{
+                                data: [1080, 220, 450],
+                                backgroundColor: ['#E5B1B0', '#F2A680', '#7F6173'],
+                                borderWidth: 2,
+                                borderColor: '#fff'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' } }
+                        }
+                    });
+                }
+            }, 100);
+        }
+
+        // Other navigation functions
+        function loadRetails() {
+            document.getElementById('main-content').innerHTML = '<h2>Retails Section</h2><p>Retail management content will go here.</p>';
+        }
+
+        function loadWholesales() {
+            document.getElementById('main-content').innerHTML = '<h2>Wholesale Section</h2><p>Wholesale management content will go here.</p>';
+        }
+
+        function loadUsers() {
+            document.getElementById('main-content').innerHTML = '<h2>Users Section</h2><p>User management content will go here.</p>';
+        }
+
+        function loadReports() {
+            document.getElementById('main-content').innerHTML = '<h2>Reports Section</h2><p>Reports and analytics will go here.</p>';
+        }
+
+        // Load dashboard by default when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboard();
+        });
+    </script>
+    
+    <script src="./../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sales Dashboard</title>
+  <link rel="stylesheet" href="./../css/dash.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+
+    <!-- Header Section -->
+    <h2>Sales Activity</h2>
+    <div class="summary-cards">
+      <div class="card"> 
+        <canvas id="chaWholeSale"></canvas>
+        <h3>3433</h3>
+         <p>WHOLESALE QUANTITY</p> 
+      </div>
+
+      <div class="card"> 
+        <canvas id="chaRetail"></canvas>
+        <h3>12</h3>
+         <p>RETAIL QUANTITY</p> 
+        </div>
+      <div class="card"> 
+        <!-- <canvas id="chaUser" width="40" height="40" style="max-width:50px; max-height:50px;"></canvas> -->
+        <h3>21</h3> 
+        <p>USERS</p>
+       </div>
+      <div class="card"> 
+        <h3>101</h3> 
+        <p>MONTHLY REVENUE</p>
+       </div>
+    </div>
+
+    <!-- Inventory Summary -->
+    <div class="inventory-summary">
+      <h3>Annual Revenue</h3>
+              <canvas id="chaAnnualRevenue"></canvas>
+    </div>
+
+    <!-- Key Metrics -->
+    <h3>REVENUE</h3>
+    <div class="metrics">
+      <div class="metric"><h4>$36,569</h4><p>ANNUALLY REVENUE</p></div>
+      <div class="metric"><h4>$6,569</h4><p>MONTHLY REVENUE</p></div>
+      <div class="metric"><h4>$3,569</h4><p>WEEKLY REVENUE</p></div>
+      <div class="metric"><h4>$9,569</h4><p>DAILY REVENUE</p></div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-section">
+      <div class="chart-container">
+        <h3>Sales Distribution</h3>
+        <canvas id="salesPieChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h3>Inventory Status</h3>
+        <canvas id="inventoryPieChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Inventory Low Stock -->
+     <div class="products">
+
+<div class="low-stock">
+      <h3>Inventory</h3>
+      <span class="item-count">6 items</span>
+      <p class="warning">This item is low in stock, please order it soon!</p>
+      <ul>
+        <li>Tomatoes <span>(<slot>35kg</slot>)</span> <data>Wholesale</data> <small>Available: <span>10</span></small> </li>
+        <li>Tomatoes <span>(<slot>35kg</slot>)</span> <data>Retail</data> <small>Available: <span>2</span></small> </li>
+        <li>Tomatoes <span>(<slot>35kg</slot>)</span> <data>Wholesale</data> <small>Available: <span>10</span></small> </li>
+        <li>Tomatoes <span>(<slot>35kg</slot>)</span> <data>Retail</data> <small>Available: <span>1</span></small> </li>
+        <li>Tomatoes <span>(<slot>35kg</slot>)</span> <data>Retail</data> <small>Available: <span>10</span></small> </li>
+        <li>Tomatoes <span>(<slot>35kg</slot>)</span> <data>Wholesale</data> <small>Available: <span>10</span></small> </li>
+      </ul>
+    </div>
+
+    <!-- Top Selling -->
+    <div class="top-selling">
+      <h3>Top Selling</h3>
+&nbsp;
+&nbsp;
+&nbsp;
+      <select>
+        <option>
+          Wholesale
+        </option>
+        <option>
+          Retail
+        </option>
+      </select>
+
+      <select class="twmy">
+        <option>
+          Today
+        </option>
+        <option>
+          This week
+        </option>
+        <option>
+          This month
+        </option>
+        <option>
+          This year
+        </option>
+      </select>
+
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Sold</th>
+          <th>Price</th>
+        </tr>
+        <!-- <tbody class="to-selling-table"> -->
+        <tr>
+          <td>AirPods 3rd gen</td>
+          <td>101</td>
+          <td>$169</td>
+        </tr>
+        <tr>
+          <td>iPad Pro 11-inch</td>
+          <td>199</td>
+          <td>$799</td>
+        </tr>
+        <tr>
+          <td>iPad 10th gen</td>
+          <td>125</td>
+          <td>$449</td>
+        </tr>
+        <tr>
+          <td>AirPods 2nd gen</td>
+          <td>105</td>
+          <td>$129</td>
+        </tr>
+        <tr>
+          <td>AirPods 3rd gen</td>
+          <td>101</td>
+          <td>$169</td>
+        </tr>
+        <tr>
+          <td>iPad Pro 11-inch</td>
+          <td>199</td>
+          <td>$799</td>
+        </tr>
+        <tr>
+          <td>iPad 10th gen</td>
+          <td>125</td>
+          <td>$449</td>
+        </tr>
+        <tr>
+          <td>AirPods 2nd gen</td>
+          <td>105</td>
+          <td>$129</td>
+        </tr>
+        <tr>
+          <td>AirPods 3rd gen</td>
+          <td>101</td>
+          <td>$169</td>
+        </tr>
+        <tr>
+          <td>iPad Pro 11-inch</td>
+          <td>199</td>
+          <td>$799</td>
+        </tr>
+        <tr>
+          <td>iPad 10th gen</td>
+          <td>125</td>
+          <td>$449</td>
+        </tr>
+        <tr>
+          <td>AirPods 2nd gen</td>
+          <td>105</td>
+          <td>$129</td>
+        </tr>
+        <!-- </tbody> -->
+      </table>
+    </div>
+
+    <!-- Recent Orders -->
+    <div class="recent-orders">
+      <h3>Recent Orders</h3>
+      <span class="viewAll"><a href="#Veiw All">Veiw all&gt;&gt;</a></span>
+      <ul>
+        <li>
+          <div class="order-detail"><span class="order-id">51Hcw3j</span> <span class="order-price-date"> <span class="order-total">$432.00</span> <span class="order-date">Sept 12, 2003</span>  </span></div>
+        </li>
+         <li>
+          <div class="order-detail"><span class="order-id">51Hcw3j</span> <span class="order-price-date"> <span class="order-total">$432.00</span> <span class="order-date">Sept 12, 2003</span>  </span></div>
+        </li>
+         <li>
+          <div class="order-detail"><span class="order-id">51Hcw3j</span> <span class="order-price-date"> <span class="order-total">$432.00</span> <span class="order-date">Sept 12, 2003</span>  </span></div>
+        </li>
+         <li>
+          <div class="order-detail"><span class="order-id">51Hcw3j</span> <span class="order-price-date"> <span class="order-total">$432.00</span> <span class="order-date">Sept 12, 2003</span>  </span></div>
+        </li>
+         <li>
+          <div class="order-detail"><span class="order-id">51Hcw3j</span> <span class="order-price-date"> <span class="order-total">$432.00</span> <span class="order-date">Sept 12, 2003</span>  </span></div>
+        </li>
+         <li>
+          <div class="order-detail"><span class="order-id">51Hcw3j</span> <span class="order-price-date"> <span class="order-total">$432.00</span> <span class="order-date">Sept 12, 2003</span>  </span></div>
+        </li>
+         <li>
+          <div class="order-detail"><span class="order-id">51Hcw3j</span> <span class="order-price-date"> <span class="order-total">$432.00</span> <span class="order-date">Sept 12, 2003</span>  </span></div>
+        </li>
+      </ul>
+    </div>
+
+     </div>
+    
+
+  </div>
+
+ <script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      const chaWholeSale = document.getElementById('chaWholeSale');
+      const chaRetail = document.getElementById('chaRetail');
+      const chaAnnualRevenue = document.getElementById('chaAnnualRevenue');
+
+      // Check if elements exist before creating charts
+      if (chaWholeSale) {
+        const mychaWholeSale = new Chart(chaWholeSale.getContext('2d'), {
+          type: 'doughnut',
+          data: {
+            labels: ['Wholesale In-Stock', 'Wholesale Out-Stock'],
+            datasets: [{
+              label: 'Wholesale Distribution',
+              data: [3433, 1567],
+              borderColor: '#F2A680',
+              backgroundColor: ['#ED8B85', '#F2FAF7'],
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+        });
+      }
+
+      if (chaRetail) {
+        const mychaRetail = new Chart(chaRetail.getContext('2d'), {
+          type: 'doughnut',
+          data: {
+            labels: ['Retail In-Stock', 'Retail Out-Stock'],
+            datasets: [{
+              label: 'Retail Distribution',
+              data: [12, 88],
+              borderColor: '#F2A680',
+              backgroundColor: ['#ED8B85', '#F2FAF7'],
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+        });
+      }
+
+
+      if (chaAnnualRevenue) {
+        const mychaAnnualRevenue = new Chart(chaAnnualRevenue.getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+              label: 'Annual Revenue',
+              data: [12000, 19000, 15000, 25000, 22000, 30000],
+              borderColor: '#F2A680',
+              backgroundColor: '#f2a68022',
+              fill: true,
+              tension: 0.4,
+              borderWidth: 3
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  callback: function(value) {
+                    return '$' + value.toLocaleString();
+                  }
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top'
+              }
+            }
+          }
+        });
+      }
+
+      // Sales Distribution Pie Chart
+      const salesChart = document.getElementById('salesPieChart');
+      if (salesChart) {
+        const salesPieChart = new Chart(salesChart.getContext('2d'), {
+          type: 'pie',
+          data: {
+            labels: ['Wholesale', 'Retail'],
+            datasets: [{
+              label: 'Sales Distribution',
+              data: [3001, 5000],
+              backgroundColor: [
+                '#F2A680',
+                '#ED8B85'
+              ],
+              borderWidth: 2,
+              borderColor: '#fff'
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'bottom'
+              },
+              title: {
+                display: false
+              }
+            }
+          }
+        });
+      }
+
+      // Inventory Status Pie Chart
+      const inventoryChart = document.getElementById('inventoryPieChart');
+      if (inventoryChart) {
+        const inventoryPieChart = new Chart(inventoryChart.getContext('2d'), {
+          type: 'pie',
+          data: {
+            labels: ['In Stock', 'Low Stock', 'Out of Stock'],
+            datasets: [{
+              label: 'Inventory Status',
+              data: [1080, 220, 450],
+              backgroundColor: [
+                '#E5B1B0',
+                '#F2A680',
+                '#7F6173'
+              ],
+              borderWidth: 2,
+              borderColor: '#fff'
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'bottom'
+              },
+              title: {
+                display: false
+              }
+            }
+          }
+        });
+      }
+    });
+
+  </script>
+
+</body>
+</html>

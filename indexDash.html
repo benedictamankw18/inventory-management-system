@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sales Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="dashboard">
+
+    <!-- Header Section -->
+    <h2>Sales Activity</h2>
+    <div class="summary-cards">
+      <div class="card"> <h3>3001</h3> <p>TO BE PACKED</p> </div>
+      <div class="card"> <h3>12</h3> <p>TO BE SHIPPED</p> </div>
+      <div class="card"> <h3>21</h3> <p>TO BE DELIVERED</p> </div>
+      <div class="card"> <h3>101</h3> <p>TO BE INVOICED</p> </div>
+    </div>
+
+    <!-- Inventory Summary -->
+    <div class="inventory-summary">
+      <h3>Inventory Summary</h3>
+      <p>In-stock: <span>104580</span></p>
+      <p>Re-stock: <span>220</span></p>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="metrics">
+      <div class="metric"><h4>$36,569</h4><p>Total Revenue</p></div>
+      <div class="metric"><h4>$6,569</h4><p>Total Expenses</p></div>
+      <div class="metric"><h4>3,569</h4><p>Total Customers</p></div>
+      <div class="metric"><h4>9,569</h4><p>Total Orders</p></div>
+    </div>
+
+    <!-- Inventory Low Stock -->
+    <div class="low-stock">
+      <h3>Inventory</h3>
+      <p class="warning">This item is low in stock, please order it soon!</p>
+      <ul>
+        <li>iPhone 14 Pro - Available: 3 <a href="#">Order now &gt;&gt;</a></li>
+        <li>iPhone 14 Pro - Available: 3 <a href="#">Order now &gt;&gt;</a></li>
+      </ul>
+    </div>
+
+    <!-- Top Selling -->
+    <div class="top-selling">
+      <h3>Top Selling</h3>
+      <table>
+        <tr><th>Name</th><th>Sold</th><th>Price</th></tr>
+        <tr><td>AirPods 3rd gen</td><td>101</td><td>$169</td></tr>
+        <tr><td>iPad Pro 11-inch</td><td>199</td><td>$799</td></tr>
+        <tr><td>iPad 10th gen</td><td>125</td><td>$449</td></tr>
+        <tr><td>AirPods 2nd gen</td><td>105</td><td>$129</td></tr>
+      </table>
+    </div>
+
+    <!-- Recent Orders -->
+    <div class="recent-orders">
+      <h3>Recent Orders</h3>
+      <ul>
+        <li>
+          iPhone 14 - Order ID: 0009821 - <span class="status pending">Pending</span>
+        </li>
+        <li>
+          iPhone 14 - Order ID: 0009821 - <span class="status done">Done</span>
+        </li>
+        <li>
+          iPhone 14 - Order ID: 0009821 - <span class="status pending">Pending</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+</html>
